@@ -5,12 +5,15 @@ mongoose.connect('mongodb+srv://221030201:qJYxKYmP2YQTwNIs@cluster0.ukfua3o.mong
 
 const AdminSchema=new mongoose.Schema({
 username:String,
-password:String
+password:String,
+firstName:String,
+
 })
 
 const UserSchema=new mongoose.Schema({
 username:String,
 password:String,
+firstName:String,
 purchasedCourses:[{
     type:mongoose.Schema.Types.ObjectId,
     ref:'Course'
@@ -21,10 +24,7 @@ const CourseSchema=new mongoose.Schema({
     title:String,
     price:Number,
     description:String,
-    imageLink:String
-
-
-    
+    imageLink:String   
 })
 
 
