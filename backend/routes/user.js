@@ -101,8 +101,6 @@ router.get("/courses",userMiddleware,async (req,res)=>{
         }
     })
 
-    console.log(getCourses)
-
     res.json({
         courses:getCourses.map(courses=>({
             title: courses.title,
@@ -124,7 +122,7 @@ router.post("/courses/:courseId",async (req,res)=>{
         username: username
     },{
         "$push":{
-            purchasedCourses:courseId
+            purchasedCourses:courseId   
         }
     })
 
