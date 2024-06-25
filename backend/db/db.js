@@ -1,12 +1,16 @@
 const mongoose=require("mongoose");
 
-mongoose.connect('mongodb+srv://221030201:qJYxKYmP2YQTwNIs@cluster0.ukfua3o.mongodb.net/')
+mongoose.connect('mongodb+srv://221030201:qJYxKYmP2YQTwNIs@cluster0.ukfua3o.mongodb.net/course-selling')
 
 
 const AdminSchema=new mongoose.Schema({
 username:String,
 password:String,
-firstName:String,
+gmail:String,
+createdCourses:[{
+    type:mongoose.Schema.Types.Object,
+    ref:'Course'
+}]
 
 })
 
@@ -15,7 +19,7 @@ username:String,
 password:String,
 firstName:String,
 purchasedCourses:[{
-    type:mongoose.Schema.Types.ObjectId,
+    type:mongoose.Schema.Types.Object,
     ref:'Course'
 }]
 })
