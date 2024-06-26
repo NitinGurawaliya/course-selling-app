@@ -9,17 +9,17 @@ const Courses = () => {
           <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
             <h3 className="text-2xl font-bold mb-2">Course 1</h3>
             <p className="mb-4">Description of Course 1</p>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded">Learn More</button>
+            <button className="bg-green-500 text-white px-4 py-2 rounded">Learn More</button>
           </div>
           <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
             <h3 className="text-2xl font-bold mb-2">Course 2</h3>
             <p className="mb-4">Description of Course 2</p>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded">Learn More</button>
+            <button className="bg-green-500 text-white px-4 py-2 rounded">Learn More</button>
           </div>
           <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
             <h3 className="text-2xl font-bold mb-2">Course 3</h3>
             <p className="mb-4">Description of Course 3</p>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded">Learn More</button>
+            <button className="bg-green-500 text-white px-4 py-2 rounded">Learn More</button>
           </div>
         </div>
       </div>
