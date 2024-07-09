@@ -9,8 +9,8 @@ const userMiddleware=require("../middlewares/user");
 const { User, Course } = require("../db/db");
 
 const SignupBody=zod.object({
-    username:zod.string().email(),
-    firstName:zod.string(),
+    username:zod.string(),
+    email:zod.string().email(),
     password:zod.string().min(8)
 })
 
@@ -36,7 +36,7 @@ router.post("/signup",async (req,res)=>{
 
      const user = await User.create({
         username:req.body.username,
-        firstName:req.body.firstName,        
+        email:req.body.email,        
         password:req.body.password
     })
 
@@ -55,7 +55,7 @@ router.post("/signup",async (req,res)=>{
 
 
 const signinBody= zod.object({
-    username:zod.string().email(),
+    email:zod.string().email(),
     password:zod.string().min(8)
 
 })
@@ -63,16 +63,16 @@ const signinBody= zod.object({
 router.post("/signin",async (req,res)=>{
     const {success}= signinBody.safeParse(req.body);
 
-
     if(!success){
-        return res.json({
+        return res.status(400).json({
             msg:"Incorrect username or password "
         })
     }
 
-    const user = User.findOne({
-        username:req.body.username,
-        password:req.body.password
+
+
+    const user =await User.findOne({
+        email:req.body.email,
     })
 
     if(user){
@@ -83,10 +83,12 @@ router.post("/signin",async (req,res)=>{
         res.json({
             token:token
         })
-
+        return; 
     }
 
-   
+    res.status(403).json({
+        msg:"Errr while login"
+    })
 })
 
 
@@ -114,7 +116,7 @@ router.get("/courses",userMiddleware,async (req,res)=>{
     
 })
 
-router.post("/courses/:courseId",async (req,res)=>{
+router.post("/courses/:courseId",userMiddleware,async (req,res)=>{
     const courseId= req.params.courseId;
     const username= req.headers.username;
 
@@ -132,7 +134,7 @@ router.post("/courses/:courseId",async (req,res)=>{
 })
 
 
-router.get("/purchasedCourses",async(req,res)=>{
+router.get("/purchasedCourses",userMiddleware,async(req,res)=>{
 
     const user= await User.findOne({
          username:req.headers.username,
