@@ -16,6 +16,12 @@ const Testimonial = () => {
           </div>
           <div className="bg-white p-6 rounded-lg shadow-lg">
             <p className="mb-4">"I highly recommend CourseApp to everyone."</p>
+             <p className="mb-4">"I highly recommend CourseApp to everyone.I highly recommend CourseApp to everyoneI highly recommend CourseApp to everyoneI highly recommend CourseApp to everyoneI highly recommend CourseApp to everyoneI highly recommend CourseApp to everyone"</p>
+             <p className="mb-4">"I highly recommend CourseApp to everyone."</p>
+             <p className="mb-4">"I highly recommend CourseApp to everyone."</p>
+             <p className="mb-4">"I highly recommend CourseApp to everyone."</p>
+             <p className="mb-4">"I highly recommend CourseApp to everyone."</p>
+
             <h3 className="text-xl font-bold">Student 3</h3>
           </div>
         </div>
