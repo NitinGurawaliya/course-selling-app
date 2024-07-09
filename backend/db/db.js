@@ -17,7 +17,7 @@ createdCourses:[{
 const UserSchema=new mongoose.Schema({
 username:String,
 password:String,
-firstName:String,
+email:String,
 purchasedCourses:[{
     type:mongoose.Schema.Types.Object,
     ref:'Course'
