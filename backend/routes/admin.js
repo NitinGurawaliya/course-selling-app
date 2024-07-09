@@ -12,7 +12,7 @@ const { Admin, Course, User} = require("../db/db");
 const signupBody= zod.object({
     username:zod.string(),
     password:zod.string().min(8),
-    gmail:zod.string().email()
+    email:zod.string().email()
 })
 
 router.post("/signup",async (req,res)=>{
@@ -38,15 +38,13 @@ router.post("/signup",async (req,res)=>{
      const admin = await Admin.create({
         username:req.body.username,
         password:req.body.password,
-        gmail:req.body.gmail
+        email:req.body.email
 
     })
 
     const adminId= admin._id;
 
-    console.log(adminId)
-
-    console.log(JWT_SECRET)
+ 
 
     const token= jwt.sign({
         adminId
@@ -54,14 +52,14 @@ router.post("/signup",async (req,res)=>{
 
     res.json({
         msg:"Admin created successfully",
-        token
+        token:token
     })
 })
 
 
 
 const signinBody= zod.object({
-    gmail:zod.string().email(),
+    email:zod.string().email(),
     password:zod.string().min(8)
 })
 
@@ -76,7 +74,7 @@ router.post("/signin",async (req,res)=>{
     }
 
     const admin = await Admin.findOne({
-        gmail:req.body.gmail
+        email:req.body.email
     })
 
     if(admin){
